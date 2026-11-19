@@ -43,3 +43,32 @@ def bijection(n):
     
     return clauses
 
+def encode(graph1, graph2):
+    n = graph1.n
+    clauses = bijection(n)
+    # if graphs have different # of edges, not isomorphic
+    if len(graph1.edges) != len(graph2.edges):
+        clauses.append([])
+        return clauses
+    # if graphs have different # of vertices, not isomorphic
+    if graph1.n != graph2.n:
+        clauses.append([])
+        return clauses
+    
+    # preserving edges
+    for edge in graph1.edges:
+        i = edge[0]
+        j = edge[1]
+
+        for k in range(n):
+            for l in range(k + 1, n):
+                if not graph2.has_edge(k, l):
+                    x = variable(i, k, n)
+                    y = variable(j, l, n)
+
+                    clauses.append([-x, -y])
+
+                    x = variable(i, l, n)
+                    y = variable(j, k, n)
+                    clauses.append([-x, -y])
+    return clauses
