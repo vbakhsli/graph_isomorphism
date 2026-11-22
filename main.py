@@ -1,8 +1,11 @@
+import sys
 import graph
 import encoder
 import solver
 
-graphs = graph.read_graph("examples/test1.txt")
+# graphs = graph.read_graph("examples/test1.txt")
+input = sys.argv[1]
+graphs = graph.read_graph(input)
 
 g = graphs[0]
 h = graphs[1]
