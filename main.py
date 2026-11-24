@@ -3,33 +3,15 @@ import graph
 import encoder
 import solver
 
-# graphs = graph.read_graph("examples/test1.txt")
 input = sys.argv[1]
 graphs = graph.read_graph(input)
 
 g = graphs[0]
 h = graphs[1]
 n = g.n
-# print("vertices:", g.n)
-# print("edges:", g.edges)
-
-# print(encoder.variable(0, 0, 3))
-
-# clauses = encoder.bijection(3)
-
-# for clause in clauses:
-#     print(clause)
-# print(len(clauses))
 
 clauses = encoder.encode(g, h)
 
-# print(g.n * h.n)
-# for clause in clauses:
-#     print(clause)
-
-# import solver
-
-# clauses = [[1, 2], [-1, 2]]
 output = solver.solve(clauses, g.n)
 if "s SATISFIABLE" in output:
     print("Graphs are isomorphic")
