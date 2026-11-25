@@ -85,3 +85,15 @@ Graphs are isomorphic
 
 If not:
 Graphs are not isomorphic
+
+5. Experiments
+
+I tested the program on small examples, and all got correct results.
+
+I also created a bigger example with 12 vertices and 16 edges.
+
+To check the running time, I used:
+time python3 main.py examples/large_test.txt
+
+
+The program took only 0.029 seconds.
